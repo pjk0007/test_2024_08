@@ -143,7 +143,7 @@ public class NotaktoRule : Rule
 
 public class GomokuRule : Rule
 {
-    public GomokuRule() : base("gomoku", new string[] { "O", "X" }, 1, 5)
+    public GomokuRule() : base("gomoku", new string[] { "O", "X" }, 1, 10)
     {
     }
 
@@ -195,6 +195,20 @@ public class GomokuRule : Rule
                     return true;
                 }
                 if (boards[i * size + j] == "X" && boards[(i + 1) * size + j + 1] == "X" && boards[(i + 2) * size + j + 2] == "X" && boards[(i + 3) * size + j + 3] == "X" && boards[(i + 4) * size + j + 4] == "X")
+                {
+                    return true;
+                }
+            }
+        }
+        for (int i = 0; i < size - 4; i++)
+        {
+            for (int j = 4; j < size; j++)
+            {
+                if (boards[i * size + j] == "O" && boards[(i + 1) * size + j - 1] == "O" && boards[(i + 2) * size + j - 2] == "O" && boards[(i + 3) * size + j - 3] == "O" && boards[(i + 4) * size + j - 4] == "O")
+                {
+                    return true;
+                }
+                if (boards[i * size + j] == "X" && boards[(i + 1) * size + j - 1] == "X" && boards[(i + 2) * size + j - 2] == "X" && boards[(i + 3) * size + j - 3] == "X" && boards[(i + 4) * size + j - 4] == "X")
                 {
                     return true;
                 }
