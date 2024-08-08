@@ -219,7 +219,11 @@ public class Game
         {
             RedoStack.Push(CurrentState.Copy());
             CurrentState = UndoStack.Pop();
-            CurrentState.IsFirstPlayerTurn = !CurrentState.IsFirstPlayerTurn;
+            if (Mode == GameMode.HumanVsHuman)
+            {
+                CurrentState.IsFirstPlayerTurn = !CurrentState.IsFirstPlayerTurn;
+            }
+
         }
         else
         {
@@ -235,7 +239,10 @@ public class Game
         {
             UndoStack.Push(CurrentState.Copy());
             CurrentState = RedoStack.Pop();
-            CurrentState.IsFirstPlayerTurn = !CurrentState.IsFirstPlayerTurn;
+            if (Mode == GameMode.HumanVsHuman)
+            {
+                CurrentState.IsFirstPlayerTurn = !CurrentState.IsFirstPlayerTurn;
+            }
         }
         else
         {
