@@ -87,6 +87,10 @@ public class NotaktoRule : Rule
         {
             disabledBoard = 1;
         }
+        if (state.Boards[(boardIndex - 1) * Size * Size + 2] == "X" && state.Boards[(boardIndex - 1) * Size * Size + Size + 1] == "X" && state.Boards[(boardIndex - 1) * Size * Size + 2 * Size] == "X")
+        {
+            disabledBoard = 1;
+        }
 
         return validNumber && isEmpty && disabledBoard == 0;
     }
